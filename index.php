@@ -10,9 +10,9 @@
 
     <?php require("./config/db.php"); ?>
 
-    <h1>Интернет Макаcин</h1>
+    <?php require("./html/head.html"); ?>
 
-    <?php if(@$_COOKIE["user"] == ""): ?>
+    <?php // if(@$_COOKIE["user"] == ""): ?>
         <!-- Регистрация -->
         <div class="container">
           <div class="row">
@@ -37,11 +37,28 @@
             </div>
           </div>
         </div>
-    <?php else: ?>
+    <?php // else: ?>
       <!-- Названия, поиск, о нас -->
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>Поиск</h3>
+            <form action="./search/search.php" method="get">
+              <input type="search" name="search" id="search" placeholder="Что ищите?"></br>
+              <input type="radio" name="search_radio" id="users" value="users" checked>
+              <label for="users">Пользователи</label>
+              <input type="radio" name="search_radio" id="products" value="products">
+              <label for="products">Обувь</label>
+              <input type="submit" name="sub_search" value="Найти">
+            </form>
+          </div>
+        </div>
+      </div>
       <!-- Вывод товаров -->
       <!-- Добавление товаров -->
       <!-- Редактирование товаров -->
-    <?php endif; ?>
+    <?php // endif; ?>
+
+    <?php require("./html/footer.html"); ?>
   </body>
 </html>
