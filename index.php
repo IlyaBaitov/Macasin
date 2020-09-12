@@ -55,8 +55,30 @@
         </div>
       </div>
       <!-- Вывод товаров -->
+        <?php
+          // DB
+            require("./config/db.php");
+
+          // SQL request
+            $sql = "SELECT * FROM `products` ORDER BY `id` DESC";
+            $query = $pdo->query($sql);
+
+          // Products with delete / update
+            while($row = $query->fetch(PDO::FETCH_OBJ))
+            {
+              echo "<pre>";
+              echo "<a href='./products/del_up.php?".$row->id."'>" . $row->title . "</a>" . "  " . $row->price . "  " . $row->description;
+              echo "</pre>";
+            }
+        ?>
       <!-- Добавление товаров -->
+      <?php // if($_COOKIE["user"] == "admin"): ?>
+        <a href="./products/add.php"><p>Добавить товар</p></a>
       <!-- Редактирование товаров -->
+
+      <!-- Удаление товаров -->
+
+      <?php // endif; ?>
     <?php // endif; ?>
 
     <?php require("./html/footer.html"); ?>
