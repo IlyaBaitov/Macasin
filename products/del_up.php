@@ -50,5 +50,24 @@
       $query_up->execute();
   }
 ?>
+<!-- DELETE -->
+<form action="#" method="post">
+  <input type="submit" name="delete" id="delete" value="Удалить">
+</form>
+
+<?php
+  @$delete = $_POST["delete"];
+
+  if(!empty($delete))
+  {
+    $sql = "DELETE FROM `products` WHERE `id` = '$id'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    // Location
+      header("Location: ../index.php");
+  }
+
+?>
 
 <a href="../index.php">Вернуться</a>
