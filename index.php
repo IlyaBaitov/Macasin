@@ -67,7 +67,7 @@
             while($row = $query->fetch(PDO::FETCH_OBJ))
             {
               echo "<pre>";
-              echo "<a href='./products/del_up.php?".$row->id."'>" . $row->title . "</a>" . "  " . $row->price . "  " . $row->description;
+              echo "<a href='./products/del_up.php?id=".$row->id."'>" . $row->title . "</a>" . "  " . $row->price . "  " . $row->description;
               echo "</pre>";
             }
         ?>
