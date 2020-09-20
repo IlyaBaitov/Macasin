@@ -12,16 +12,16 @@
 
     <?php require("./html/head.html"); ?>
 
-    <?php // if(@$_COOKIE["user"] == ""): ?>
+    <?php if(@$_COOKIE["user"] == ""): ?>
         <!-- Регистрация -->
         <div class="container">
           <div class="row">
             <div class="col">
               <form action="./reg_auth/reg.php" method="post">
                 <h1>Регистрация</h1></br>
-                <input type="login" name="login" id="login" placeholder="Введите логин" class="form-control"></br>
-                <input type="password" name="pass" id="pass" placeholder="Введите пароль" class="form-control"></br>
-                <input type="email" name="login" id="login" placeholder="Введите email" class="form-control"></br>
+                <input type="login" name="login" id="login_reg" placeholder="Введите логин" class="form-control"></br>
+                <input type="password" name="pass" id="pass_reg" placeholder="Введите пароль" class="form-control"></br>
+                <input type="email" name="email" id="email_reg" placeholder="Введите email" class="form-control"></br>
                 <input type="submit" name="sub_reg" value="Зарегистрироваться" class="btn btn-success">
               </form>
             </div>
@@ -30,14 +30,17 @@
             <div class="col">
               <form action="./reg_auth/auth.php" method="post">
                 <h1>Авторизация</h1></br>
-                <input type="login" name="login" id="login" placeholder="Введите логин" class="form-control"></br>
-                <input type="password" name="pass" id="pass" placeholder="Введите пароль" class="form-control"></br>
+                <input type="login" name="login" id="login_auth" placeholder="Введите логин" class="form-control"></br>
+                <input type="password" name="pass" id="pass_auth" placeholder="Введите пароль" class="form-control"></br>
                 <input type="submit" name="sub_auth" value="Авторизоваться" class="btn btn-success">
               </form>
             </div>
           </div>
         </div>
-    <?php // else: ?>
+    <?php else: ?>
+      <!-- Пользователь -->
+      <p><a href="./user/user_page"><?php echo $_COOKIE["user"] ?></a> </br> <a href="./reg_auth/exit.php">Выйти</a></p>
+
       <!-- Названия, поиск, о нас -->
       <div class="container">
         <div class="row">
@@ -72,14 +75,14 @@
             }
         ?>
       <!-- Добавление товаров -->
-      <?php // if($_COOKIE["user"] == "admin"): ?>
+      <?php if($_COOKIE["user"] == "admin"): ?>
         <a href="./products/add.php"><p>Добавить товар</p></a>
       <!-- Редактирование товаров -->
 
       <!-- Удаление товаров -->
 
-      <?php // endif; ?>
-    <?php // endif; ?>
+      <?php endif; ?>
+    <?php endif; ?>
 
     <?php require("./html/footer.html"); ?>
   </body>
